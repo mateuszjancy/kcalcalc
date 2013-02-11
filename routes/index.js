@@ -1,8 +1,14 @@
+exports.list = function(req, res){
+};
 
-/*
- * GET home page.
- */
+exports.get = function(req, res){
+};
 
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+exports.create = function(req, res){
+};
+
+exports.update = function(req, res){
+};
+
+exports.remove = function(req, res){
 };

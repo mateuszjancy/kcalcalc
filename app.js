@@ -9,6 +9,9 @@ var express = require('express')
   , http = require('http')
   , path = require('path');
 
+//routers
+var product = require('./routes/product');
+
 var app = express();
 
 app.configure(function(){
@@ -31,6 +34,14 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+
+//Product
+app.get('/product', product.list);
+app.get('/product/:_id', product.get);
+app.put('/product', product.create);
+app.post('/product/:_id', product.update);
+app.delete('/product/:_id', product.remove);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
