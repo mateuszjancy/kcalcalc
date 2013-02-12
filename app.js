@@ -20,10 +20,11 @@ var express = require('express')
 
 //routers
 var product = require('./routes/product');
+var unit = require("./routes/unit");
 
 //Bootsrtap
 var bootsrtap = require("./domain/bootsrtap");
-var unit = require("./domain/unit");
+var unitModel = require("./domain/unit");
 var productModel = require("./domain/product");
 
 //DB connection
@@ -59,12 +60,19 @@ app.put('/product', product.create);
 app.post('/product/:_id', product.update);
 app.delete('/product/:_id', product.remove);
 
+//Units
+app.get('/unit', unit.list);
+app.get('/unit/:_id', unit.get);
+app.put('/unit', unit.create);
+app.post('/unit/:_id', unit.update);
+app.delete('/unit/:_id', unit.remove);
+
 
 if(WITH_BOOTSTRAP){
     bootsrtap.dropDatabase();
-    bootsrtap.createUnit("gr.", "Kilogram", function(unit){
+    bootsrtap.createUnit("gr.", "Kilogram", function(unitModel){
       for(var i = 0; i < 10; i++){
-        bootsrtap.createProduct(unit, "S1000" + i, "Name00"+i, i, i, i, i, i * 10, null);  
+        bootsrtap.createProduct(unitModel, "S1000" + i, "Name00"+i, i, i, i, i, i * 10, null);  
       }
     });
 };
