@@ -1,3 +1,10 @@
+//Const
+var WITH_BOOTSTRAP = true;
+var DB = {
+  DEV: "mongodb://localhost/kcalcalc_dev",
+  QA: "mongodb://localhost/kcalcalc_qa",
+  PROD: "mongodb://localhost/kcalcalc_prod"
+}
 
 /**
  * Module dependencies.
@@ -7,10 +14,20 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , mongoose = require("mongoose")
+  ;
 
 //routers
 var product = require('./routes/product');
+
+//Bootsrtap
+var bootsrtap = require("./domain/bootsrtap");
+var unit = require("./domain/unit");
+var productModel = require("./domain/product");
+
+//DB connection
+mongoose.connect(DB.DEV);
 
 var app = express();
 
@@ -42,6 +59,15 @@ app.put('/product', product.create);
 app.post('/product/:_id', product.update);
 app.delete('/product/:_id', product.remove);
 
+
+if(WITH_BOOTSTRAP){
+    bootsrtap.dropDatabase();
+    bootsrtap.createUnit("gr.", "Kilogram", function(unit){
+      for(var i = 0; i < 10; i++){
+        bootsrtap.createProduct(unit, "S1000" + i, "Name00"+i, i, i, i, i, i * 10, null);  
+      }
+    });
+};
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
