@@ -8,24 +8,24 @@ var product = new Schema({
 	name: String,
 	mesures : {
 		calories : {
-			value: String,
+			value: Number,
 			unit: {type: ObjectId, ref: 'Unit'}
 		},
 		fats : {
-			value: String,
+			value: Number,
 			unit: {type: ObjectId, ref: 'Unit'}
 		},
 		sugars : {
-			value: String,
+			value: Number,
 			unit: {type: ObjectId, ref: 'Unit'}
 		},
 		cellulose : {
-			value: String,
+			value: Number,
 			unit: {type: ObjectId, ref: 'Unit'}
 		}
 	},
 	portionSize : {
-		value: String,
+		value: Number,
 		unit: {type: ObjectId, ref: 'Unit'}
 	}
 });

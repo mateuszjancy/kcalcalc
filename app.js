@@ -18,6 +18,9 @@ var express = require('express')
   , mongoose = require("mongoose")
   ;
 
+//main page routers
+var mainRouter = require('./routes/main')
+
 //routers
 var product = require('./routes/product');
 var unit = require("./routes/unit");
@@ -50,8 +53,11 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+//Index
 app.get('/', routes.index);
-app.get('/users', user.list);
+
+//Main
+app.get('/main', mainRouter.main);
 
 //Product
 app.get('/product', product.list);
