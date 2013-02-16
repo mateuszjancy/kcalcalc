@@ -1,10 +1,14 @@
 define([
     'jquery',
-    'backbone'
+    'backbone',
+    'app/products/model/product',
+    'app/products/view/productCreate'
   ], 
   function(
       $, 
-      Backbone
+      Backbone,
+      ProductModel,
+      ProductCreateView
     ) {
     var Router = Backbone.Router.extend({
       routes: {
@@ -26,11 +30,22 @@ define([
       },
 
       create: function(){
-        console.log("create");
+          console.log("create");
+
+          var productModel = new ProductModel();
+          var productCreateView = new ProductCreateView({model: productModel});
+
+          $("#product-container").html(productCreateView.render().el);
+          this.navigate("#main", {trigger: false, replace: true});
+
       },
 
       update: function(_id){
           console.log("update");
+      },
+
+      save: function(){
+          console.log("save");
       },
 
       remove: function(_id){

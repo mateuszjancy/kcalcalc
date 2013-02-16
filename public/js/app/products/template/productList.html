@@ -1,0 +1,8 @@
+<div>
+    <select id="product" name="product">
+        {{data.products.each(function(product){ }}
+            <option value="{{=product._id}}">{{=product.name}}</option>
+        {{ } }}
+    </select>
+    <a href="#create">create product</a>
+</div>
