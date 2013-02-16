@@ -10,8 +10,8 @@ exports.dropDatabase = function(){
 
 exports.createProduct = function(unit, symbol, name, calories, fats, sugars, cellulose, portionSize, callback){
 	var product = new Product({
-		symbol: String, 
-		name: String,
+		symbol: symbol, 
+		name: name,
 		mesures : {
 			calories : {
 				value: calories,
