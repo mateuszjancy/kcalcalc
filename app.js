@@ -73,7 +73,6 @@ app.put('/unit', unit.create);
 app.post('/unit/:_id', unit.update);
 app.delete('/unit/:_id', unit.remove);
 
-
 if(WITH_BOOTSTRAP){
     bootsrtap.dropDatabase();
     bootsrtap.createUnit("gr.", "Kilogram", function(unitModel){
