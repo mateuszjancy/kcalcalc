@@ -3,9 +3,24 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/kc_widget.css' />
+    <script src="/js/lib/jquery-1.9.1.js" /></script>
+    <script src="/js/lib/jquery-ui-1.10.0.custom.js" /></script>
+    <script src="/js/kc_widget.js" /></script>
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <div id="testPanel"></div>
   </body>
+
+  <script>
+    $(document).ready(function(){
+        $('#testPanel').kcPanel({
+            type: 'Cukry',
+            quantity:'2,5g',
+            val:'10%'
+        });
+    });
+  </script>
 </html>
